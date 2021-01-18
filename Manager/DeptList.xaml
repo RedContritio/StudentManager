@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="StudentManager.Manager.DeptList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StudentManager.Manager"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="学院情况" FontSize="20" HorizontalAlignment="Center"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="更新时间："/>
+            <Label Grid.Column="1" x:Name="updateTime" Content="1900-01-01"/>
+        </Grid>
+        <DataGrid Grid.Row="2" x:Name="datagrid" IsReadOnly="True" ColumnWidth="*" AutoGenerateColumns="False" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="学院编号" Width="*" Binding="{Binding Path=DNO}"/>
+                <DataGridTextColumn Header="学院名称" Width="*" Binding="{Binding Path=DNAME}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="3" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" x:Name="ButtonNew" Content="新增" Padding="20, 5, 20, 5" Click="ButtonNew_Click"/>
+            <Button Grid.Column="3" x:Name="ButtonRemove" Content="删除" Padding="20, 5, 20, 5" Click="ButtonRemove_Click"/>
+            <Button Grid.Column="5" x:Name="ButtonModify" Content="修改" Padding="20, 5, 20, 5" Click="ButtonModify_Click"/>
+        </Grid>
+    </Grid>
+</UserControl>

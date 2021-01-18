@@ -1,0 +1,58 @@
+﻿<metro:MetroWindow xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls" x:Class="StudentManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentManager"
+        xmlns:student="clr-namespace:StudentManager.Student"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        mc:Ignorable="d"
+        Title="学生学籍管理系统" Height="550" Width="1000">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="用户">
+                <MenuItem Header="登录" Click="MenuLogin_Click" Margin="0, 0, 10, 0"/>
+                <MenuItem x:Name="MenuLogout" Header="注销" IsEnabled="False" Click="MenuLogout_Click"/>
+            </MenuItem>
+            <MenuItem Header="视图">
+                <MenuItem Header="导航栏" IsCheckable="True" IsChecked="True" Checked="MenuNavBar_Checked" Unchecked="MenuNavBar_Unchecked"/>
+                <MenuItem Header="关闭所有窗口" Click="MenuCloseTabs_Click"/>
+                <MenuItem x:Name="MenuCloseTab" Header="关闭窗口">
+                </MenuItem>
+                <MenuItem x:Name="ForceShowAll" Header="显示导航栏所有项" IsCheckable="True" Checked="ForceShowAll_Checked" Unchecked="ForceShowAll_Checked"/>
+            </MenuItem>
+            <!--<MenuItem x:Name="MenuOption" Header="选项" Visibility="Collapsed">
+            </MenuItem>-->
+        </Menu>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TreeView x:Name="NavBar" Grid.Column="0" Width="Auto" IsEnabled="False" Padding="0, 0, 10, 0">
+                <TreeViewItem Header="学籍信息" MouseDoubleClick="TreeViewBasicInfo_DoubleClick"/>
+                <TreeViewItem Header="课程成绩" MouseDoubleClick="TreeViewScoreInfo_DoubleClick"/>
+                <TreeViewItem Header="开课查询" MouseDoubleClick="TreeViewClassInfo_DoubleClick"/>
+                <TreeViewItem Header="学生情况" MouseDoubleClick="TreeViewStudentList_DoubleClick"/>
+                <TreeViewItem Header="课程情况" MouseDoubleClick="TreeViewClassList_DoubleClick"/>
+                <TreeViewItem Header="学院信息" MouseDoubleClick="TreeViewDeptList_DoubleClick"/>
+                <TreeViewItem Header="学生成绩" MouseDoubleClick="TreeViewScoreList_DoubleClick"/>
+                <TreeViewItem Header="成绩分析" IsExpanded="True">
+                    <TreeViewItem Header="课程成绩分析" MouseDoubleClick="TreeViewClassScoreStat_DoubleClick"/>
+                    <TreeViewItem Header="专业成绩分析" MouseDoubleClick="TreeViewDeptScoreStat_DoubleClick"/>
+                    <TreeViewItem Header="个人成绩分析" MouseDoubleClick="TreeViewPersonScoreStat_DoubleClick"/>
+                    <TreeViewItem Header="课程、专业分析" MouseDoubleClick="TreeViewDeptClassScoreStat_DoubleClick"/>
+                </TreeViewItem>
+            </TreeView>
+            <TabControl x:Name="TabPages" Grid.Column="1">
+            </TabControl>
+        </Grid>
+    </DockPanel>
+</metro:MetroWindow>
